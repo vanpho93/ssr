@@ -3,7 +3,7 @@ var MessageForm = React.createClass({
   update(){
       var name = this.refs.txtName.value;
       var message = this.refs.txtMessage.value;
-      alert(name + ': ' + message);
+      this.props.onUpdate(name, message);
   },
   render(){
     return(

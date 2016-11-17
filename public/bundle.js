@@ -49,9 +49,8 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(32);
 	var Hello = __webpack_require__(178);
-	var MessageForm = __webpack_require__(179);
-	var MessageText = __webpack_require__(180);
-	ReactDOM.render(React.createElement(MessageText, { name: 'Khoa', message: '90 le thi rieng' }), document.getElementById('root'));
+	var Message = __webpack_require__(181);
+	ReactDOM.render(React.createElement(Message, null), document.getElementById('root'));
 
 /***/ },
 /* 1 */
@@ -21473,30 +21472,30 @@
 /* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var React = __webpack_require__(1);
 	var MessageForm = React.createClass({
-	  displayName: 'MessageForm',
+	  displayName: "MessageForm",
 	  update: function update() {
 	    var name = this.refs.txtName.value;
 	    var message = this.refs.txtMessage.value;
-	    alert(name + ': ' + message);
+	    this.props.onUpdate(name, message);
 	  },
 	  render: function render() {
 	    return React.createElement(
-	      'div',
+	      "div",
 	      null,
-	      React.createElement('input', { type: 'text', ref: 'txtName', placeholder: 'Enter a name' }),
-	      React.createElement('br', null),
-	      React.createElement('br', null),
-	      React.createElement('input', { type: 'text', ref: 'txtMessage', placeholder: 'Enter a message' }),
-	      React.createElement('br', null),
-	      React.createElement('br', null),
+	      React.createElement("input", { type: "text", ref: "txtName", placeholder: "Enter a name" }),
+	      React.createElement("br", null),
+	      React.createElement("br", null),
+	      React.createElement("input", { type: "text", ref: "txtMessage", placeholder: "Enter a message" }),
+	      React.createElement("br", null),
+	      React.createElement("br", null),
 	      React.createElement(
-	        'button',
+	        "button",
 	        { onClick: this.update },
-	        'Update Message'
+	        "Update Message"
 	      )
 	    );
 	  }
@@ -21521,6 +21520,38 @@
 	  }
 	});
 	module.exports = MessageText;
+
+/***/ },
+/* 181 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+	var MessageText = __webpack_require__(180);
+	var MessageForm = __webpack_require__(179);
+
+	var Message = React.createClass({
+	  displayName: 'Message',
+	  getInitialState: function getInitialState() {
+	    return { name: 'Khoa', message: '90 Le Thi Rieng' };
+	  },
+	  updateM: function updateM(name, message) {
+	    this.setState({ name: name, message: message });
+	  },
+	  render: function render() {
+	    var name = this.state.name;
+	    var message = this.state.message;
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(MessageText, { name: name, message: message }),
+	      React.createElement(MessageForm, { onUpdate: this.updateM })
+	    );
+	  }
+	});
+
+	module.exports = Message;
 
 /***/ }
 /******/ ]);
