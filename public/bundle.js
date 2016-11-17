@@ -48,8 +48,9 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(32);
+	var Hello = __webpack_require__(178);
 
-	ReactDOM.render(React.createElement('a', { href: 'http://khoapham.vn' }, 'Khoa Pham Training'), document.getElementById('root'));
+	ReactDOM.render(React.createElement(Hello, null), document.getElementById('root'));
 
 /***/ },
 /* 1 */
@@ -21437,6 +21438,35 @@
 
 	module.exports = ReactDOMInvalidARIAHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(1);
+	var Hello = React.createClass({
+	  displayName: "Hello",
+	  say: function say() {
+	    var msg = this.refs.txtMessage.value;
+	    alert(msg);
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      "div",
+	      null,
+	      React.createElement("input", { type: "text", ref: "txtMessage", placeholder: "Enter your message" }),
+	      React.createElement(
+	        "button",
+	        { onClick: this.say },
+	        "Alert"
+	      )
+	    );
+	  }
+	});
+
+	module.exports = Hello;
 
 /***/ }
 /******/ ]);
