@@ -49,8 +49,9 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(32);
 	var Hello = __webpack_require__(178);
-
-	ReactDOM.render(React.createElement(Hello, null), document.getElementById('root'));
+	var MessageForm = __webpack_require__(179);
+	var MessageText = __webpack_require__(180);
+	ReactDOM.render(React.createElement(MessageText, { name: 'Khoa', message: '90 le thi rieng' }), document.getElementById('root'));
 
 /***/ },
 /* 1 */
@@ -21467,6 +21468,59 @@
 	});
 
 	module.exports = Hello;
+
+/***/ },
+/* 179 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+	var MessageForm = React.createClass({
+	  displayName: 'MessageForm',
+	  update: function update() {
+	    var name = this.refs.txtName.value;
+	    var message = this.refs.txtMessage.value;
+	    alert(name + ': ' + message);
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement('input', { type: 'text', ref: 'txtName', placeholder: 'Enter a name' }),
+	      React.createElement('br', null),
+	      React.createElement('br', null),
+	      React.createElement('input', { type: 'text', ref: 'txtMessage', placeholder: 'Enter a message' }),
+	      React.createElement('br', null),
+	      React.createElement('br', null),
+	      React.createElement(
+	        'button',
+	        { onClick: this.update },
+	        'Update Message'
+	      )
+	    );
+	  }
+	});
+	module.exports = MessageForm;
+
+/***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+	var MessageText = React.createClass({
+	  displayName: 'MessageText',
+	  render: function render() {
+	    return React.createElement(
+	      'h1',
+	      null,
+	      this.props.name + ': ' + this.props.message
+	    );
+	  }
+	});
+	module.exports = MessageText;
 
 /***/ }
 /******/ ]);
