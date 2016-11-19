@@ -21502,6 +21502,7 @@
 
 	'use strict';
 
+	var url = 'http://api.openweathermap.org/data/2.5/weather?appid=c4e735ea8bd7e7b6dc8368c752517b2d&units=metric&q=';
 	var React = __webpack_require__(1);
 	var WeatherForm = __webpack_require__(182);
 	var WeatherMessage = __webpack_require__(183);
@@ -21511,7 +21512,12 @@
 	    return { city: 'Hanoi', temp: 28 };
 	  },
 	  setStatus: function setStatus(cityName) {
+	    var _this = this;
+
 	    this.setState({ city: cityName, temp: 30 });
+	    $.get(url + cityName, function (data) {
+	      _this.setState({ city: _this.state.city, temp: data.main.temp });
+	    });
 	  },
 	  render: function render() {
 	    return React.createElement(
