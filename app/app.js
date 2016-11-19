@@ -1,8 +1,10 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Hello = require('./components/Hello.js');
-var Message = require('./components/Message.js');
+var Weather = require('./components/Weather.js');
 ReactDOM.render(
-<Message/>,
+  <div>
+      <Weather/>
+  </div>
+,
   document.getElementById('root')
 );

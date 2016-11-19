@@ -48,9 +48,12 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(32);
-	var Hello = __webpack_require__(178);
-	var Message = __webpack_require__(181);
-	ReactDOM.render(React.createElement(Message, null), document.getElementById('root'));
+	var Weather = __webpack_require__(184);
+	ReactDOM.render(React.createElement(
+	  'div',
+	  null,
+	  React.createElement(Weather, null)
+	), document.getElementById('root'));
 
 /***/ },
 /* 1 */
@@ -21440,118 +21443,86 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 178 */
+/* 178 */,
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	var React = __webpack_require__(1);
-	var Hello = React.createClass({
-	  displayName: "Hello",
-	  say: function say() {
-	    var msg = this.refs.txtMessage.value;
-	    alert(msg);
-	  },
-	  render: function render() {
-	    return React.createElement(
-	      "div",
-	      null,
-	      React.createElement("input", { type: "text", ref: "txtMessage", placeholder: "Enter your message" }),
-	      React.createElement(
-	        "button",
-	        { onClick: this.say },
-	        "Alert"
-	      )
-	    );
-	  }
-	});
-
-	module.exports = Hello;
-
-/***/ },
-/* 179 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var React = __webpack_require__(1);
-	var MessageForm = React.createClass({
-	  displayName: "MessageForm",
+	var WeatherForm = React.createClass({
+	  displayName: 'WeatherForm',
 	  update: function update() {
-	    var name = this.refs.txtName.value;
-	    var message = this.refs.txtMessage.value;
-	    this.props.onUpdate(name, message);
+	    this.props.setWeather(this.refs.txtName.value);
+	    this.refs.txtName.value = '';
 	  },
 	  render: function render() {
-	    return React.createElement(
-	      "div",
-	      null,
-	      React.createElement("input", { type: "text", ref: "txtName", placeholder: "Enter a name" }),
-	      React.createElement("br", null),
-	      React.createElement("br", null),
-	      React.createElement("input", { type: "text", ref: "txtMessage", placeholder: "Enter a message" }),
-	      React.createElement("br", null),
-	      React.createElement("br", null),
-	      React.createElement(
-	        "button",
-	        { onClick: this.update },
-	        "Update Message"
-	      )
-	    );
-	  }
-	});
-	module.exports = MessageForm;
-
-/***/ },
-/* 180 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(1);
-	var MessageText = React.createClass({
-	  displayName: 'MessageText',
-	  render: function render() {
-	    return React.createElement(
-	      'h1',
-	      null,
-	      this.props.name + ': ' + this.props.message
-	    );
-	  }
-	});
-	module.exports = MessageText;
-
-/***/ },
-/* 181 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(1);
-	var MessageText = __webpack_require__(180);
-	var MessageForm = __webpack_require__(179);
-
-	var Message = React.createClass({
-	  displayName: 'Message',
-	  getInitialState: function getInitialState() {
-	    return { name: 'Khoa', message: '90 Le Thi Rieng' };
-	  },
-	  updateM: function updateM(name, message) {
-	    this.setState({ name: name, message: message });
-	  },
-	  render: function render() {
-	    var name = this.state.name;
-	    var message = this.state.message;
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(MessageText, { name: name, message: message }),
-	      React.createElement(MessageForm, { onUpdate: this.updateM })
+	      React.createElement('input', { type: 'text', ref: 'txtName', placeholder: 'Enter your city' }),
+	      React.createElement('br', null),
+	      React.createElement('br', null),
+	      React.createElement(
+	        'button',
+	        { onClick: this.update },
+	        'Get Weather'
+	      )
 	    );
 	  }
 	});
+	module.exports = WeatherForm;
 
-	module.exports = Message;
+/***/ },
+/* 183 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+
+	var WeatherMessage = function WeatherMessage(props) {
+	  return React.createElement(
+	    'h1',
+	    null,
+	    props.city,
+	    ' is now ',
+	    props.temp
+	  );
+	};
+
+	module.exports = WeatherMessage;
+
+/***/ },
+/* 184 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+	var WeatherForm = __webpack_require__(182);
+	var WeatherMessage = __webpack_require__(183);
+	var Weather = React.createClass({
+	  displayName: 'Weather',
+	  getInitialState: function getInitialState() {
+	    return { city: 'Hanoi', temp: 28 };
+	  },
+	  setStatus: function setStatus(cityName) {
+	    this.setState({ city: cityName, temp: 30 });
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(WeatherForm, { setWeather: this.setStatus }),
+	      React.createElement(WeatherMessage, { city: this.state.city, temp: this.state.temp })
+	    );
+	  }
+	});
+	module.exports = Weather;
 
 /***/ }
 /******/ ]);
