@@ -10,3 +10,7 @@ app.listen(3000, function() {
 app.get('/', function(req, res){
   res.render('homepage');
 });
+
+app.get('/danhsach', function(req, res){
+  res.render('danhsach');
+});
