@@ -18,13 +18,15 @@
         <td>Hinh</td>
         <td>Chinh sua</td>
       </tr>
-      <tr>
-        <td>1</td>
-        <td>Quan nam</td>
-        <td>ksjahv skjdhiu dsafh7 duacici</td>
-        <td><img src="1.png" width="100px"></td>
-        <td><a href="#">Sua</td>
-      </tr>
+      <%mang.forEach(function(sanPham){%>
+        <tr>
+          <td><%=sanPham.id%></td>
+          <td><%=sanPham.tensp%></td>
+          <td><%=sanPham.mota%></td>
+          <td><img src="<%=sanPham.hinh%>" width="100px"></td>
+          <td><a href="/sua/<%=sanPham.id%>">Sua</td>
+        </tr>
+      <%})%>
     </table>
   </body>
 </html>

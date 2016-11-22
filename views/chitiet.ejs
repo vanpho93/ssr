@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sua San pham</title>
+  </head>
+  <body>
+    <form action="/xulyupdate" method="post">
+      <input type="hidden" name="id" value="<%=sanPham.id%>">
+      <input type="text" name="tensp" value="<%=sanPham.tensp%>"><br><br>
+      <input type="text" name="hinh" value="<%=sanPham.hinh%>"><br><br>
+      <input type="text" name="mota" value="<%=sanPham.mota%>"><br><br>
+      <img src="../<%=sanPham.hinh%>" alt="" width="70px"><br><br>
+      <input type="submit" value="Sua thong tin">
+    </form>
+  </body>
+</html>
