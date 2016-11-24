@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var delFile = require('./delete');
 var parser = bodyParser.urlencoded({extended: false});
 var query = require('./db.js');
 app.set('view engine', 'ejs');
@@ -39,6 +40,9 @@ app.post('/xulyupdate',parser, function(req, res){
   var tensp = req.body.tensp;
   var hinh = req.body.hinh;
   var mota = req.body.mota;
+
+  var oldImage = req.body.oldImage;
+
   query(`UPDATE "SanPham" SET tensp = '${tensp}', hinh='${hinh}',
         mota='${mota}' WHERE id=${id}`)
   .then(function(){
