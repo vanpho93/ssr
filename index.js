@@ -46,7 +46,10 @@ app.post('/xulyupdate',parser, function(req, res){
   query(`UPDATE "SanPham" SET tensp = '${tensp}', hinh='${hinh}',
         mota='${mota}' WHERE id=${id}`)
   .then(function(){
-    res.send('Sua thanh cong');
+    return delFile('./public/' + oldImage);
+  })
+  .then(function(dir){
+    res.send('Update thanh cong');
   })
   .catch(function(){
     res.send('Sua that bai');
