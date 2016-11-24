@@ -5,7 +5,9 @@ var Main = React.createClass({
     return(
       <div>
         <Nav/>
-        {this.props.children}
+        <div className="row">
+          {this.props.children}
+        </div>
       </div>
     );
   }

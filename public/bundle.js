@@ -21644,7 +21644,11 @@
 	      'div',
 	      null,
 	      React.createElement(Nav, null),
-	      this.props.children
+	      React.createElement(
+	        'div',
+	        { className: 'row' },
+	        this.props.children
+	      )
 	    );
 	  }
 	});
@@ -21668,21 +21672,76 @@
 	  render: function render() {
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'top-bar' },
 	      React.createElement(
-	        IndexLink,
-	        { to: '/', activeClassName: 'active', activeStyle: { fontWeight: "bold" } },
-	        'Get Weather'
+	        'div',
+	        { className: 'top-bar-title' },
+	        React.createElement(
+	          'strong',
+	          null,
+	          'Site Title'
+	        )
 	      ),
 	      React.createElement(
-	        Link,
-	        { to: '/about', activeClassName: 'active', activeStyle: { fontWeight: "bold" } },
-	        'About'
-	      ),
-	      React.createElement(
-	        Link,
-	        { to: '/examples', activeClassName: 'active', activeStyle: { fontWeight: "bold" } },
-	        'Examples'
+	        'div',
+	        { id: 'responsive-menu' },
+	        React.createElement(
+	          'div',
+	          { className: 'top-bar-left' },
+	          React.createElement(
+	            'ul',
+	            { className: 'menu' },
+	            React.createElement(
+	              'li',
+	              null,
+	              React.createElement(
+	                IndexLink,
+	                { to: '/', activeClassName: 'active', activeStyle: { fontWeight: "bold" } },
+	                'Get Weather'
+	              )
+	            ),
+	            React.createElement(
+	              'li',
+	              null,
+	              React.createElement(
+	                Link,
+	                { to: '/about', activeClassName: 'active', activeStyle: { fontWeight: "bold" } },
+	                'About'
+	              )
+	            ),
+	            React.createElement(
+	              'li',
+	              null,
+	              React.createElement(
+	                Link,
+	                { to: '/examples', activeClassName: 'active', activeStyle: { fontWeight: "bold" } },
+	                'Examples'
+	              )
+	            )
+	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'top-bar-right' },
+	          React.createElement(
+	            'ul',
+	            { className: 'menu' },
+	            React.createElement(
+	              'li',
+	              null,
+	              React.createElement('input', { type: 'search', placeholder: 'Search' })
+	            ),
+	            React.createElement(
+	              'li',
+	              null,
+	              React.createElement(
+	                'button',
+	                { type: 'button', className: 'button' },
+	                'Search'
+	              )
+	            )
+	          )
+	        )
 	      )
 	    );
 	  }
@@ -26750,7 +26809,7 @@
 	  render: function render() {
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'small-12 medium-6 large-4 columns' },
 	      React.createElement(WeatherForm, { setWeather: this.setStatus }),
 	      React.createElement(WeatherMessage, { city: this.state.city, temp: this.state.temp })
 	    );
