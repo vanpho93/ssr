@@ -7,6 +7,8 @@ var Weather = require('./components/Weather.js');
 var {Router, Route, IndexRoute, hashHistory} = require('react-router');
 
 //destructor es6
+require('style!css!foundation-sites/dist/foundation.min.css');
+$(document).foundation();
 
 ReactDOM.render(
   <Router history={hashHistory}>
