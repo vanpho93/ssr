@@ -27272,24 +27272,37 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 	var redux = __webpack_require__(256);
 
 	//pure function temp
-
+	var defaultState = { city: 'Saigon', temp: 31, mang: ["Ha Noi"] };
 	var reducer = function reducer() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { city: 'Saigon' };
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
 	  var action = arguments[1];
 
-	  if (action.type == "CHANGE_CITY") {
-	    return _extends({}, state, { city: action.name });
+	  switch (action.type) {
+	    case "CHANGE_CITY":
+	      return _extends({}, state, { city: action.name });
+	    case "CHANGE_TEMP":
+	      return _extends({}, state, { temp: action.nhietDo });
+	    case "ADD_E":
+	      return _extends({}, state, { mang: [].concat(_toConsumableArray(state.mang), [action.city]) });
+	    case "REMOVE_E":
+	      return _extends({}, state, { mang: state.mang.filter(function (e) {
+	          return e != action.city;
+	        }) });
+	    default:
+	      return state;
 	  }
-	  return state;
 	};
 
 	var store = redux.createStore(reducer);
 	store.subscribe(function () {
-	  var cityName = store.getState().city;
-	  document.getElementById('city').innerHTML = 'City is ' + cityName;
+	  var msg = store.getState().city + store.getState().temp;
+	  document.getElementById('city').innerHTML = 'City is ' + msg;
+	  console.log(store.getState());
 	});
 
 	store.dispatch({
@@ -27300,6 +27313,23 @@
 	store.dispatch({
 	  type: "CHANGE_CITY",
 	  name: "Hau Giang"
+	});
+
+	var action = {
+	  type: "CHANGE_TEMP",
+	  nhietDo: 30
+	};
+
+	store.dispatch(action);
+
+	store.dispatch({
+	  type: 'ADD_E',
+	  city: "An Giang"
+	});
+
+	store.dispatch({
+	  type: 'REMOVE_E',
+	  city: "Ha Noi"
 	});
 
 /***/ },
