@@ -26812,7 +26812,7 @@
 	      { className: 'small-12 medium-6 large-4 columns small-centered' },
 	      React.createElement(
 	        'h1',
-	        null,
+	        { className: 'text-center' },
 	        'Get Weather'
 	      ),
 	      React.createElement(WeatherForm, { setWeather: this.setStatus }),
