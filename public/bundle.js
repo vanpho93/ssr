@@ -26809,7 +26809,12 @@
 	  render: function render() {
 	    return React.createElement(
 	      'div',
-	      { className: 'small-12 medium-6 large-4 columns' },
+	      { className: 'small-12 medium-6 large-4 columns small-centered' },
+	      React.createElement(
+	        'h1',
+	        null,
+	        'Get Weather'
+	      ),
 	      React.createElement(WeatherForm, { setWeather: this.setStatus }),
 	      React.createElement(WeatherMessage, { city: this.state.city, temp: this.state.temp })
 	    );
@@ -26840,7 +26845,7 @@
 	      React.createElement('br', null),
 	      React.createElement(
 	        'button',
-	        { onClick: this.update },
+	        { className: 'expanded button', onClick: this.update },
 	        'Get Weather'
 	      )
 	    );
