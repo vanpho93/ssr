@@ -15,7 +15,7 @@ var Weather = React.createClass({
   render(){
     return (
       <div className="small-12 medium-6 large-4 columns small-centered">
-          <h1 className="text-center">Get Weather</h1>
+          <h1 className="text-center page-title">Get Weather</h1>
           <WeatherForm setWeather={this.setStatus}/>
           <WeatherMessage city={this.state.city} temp={this.state.temp}/>
       </div>

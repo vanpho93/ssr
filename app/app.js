@@ -8,6 +8,7 @@ var {Router, Route, IndexRoute, hashHistory} = require('react-router');
 
 //destructor es6
 require('style!css!foundation-sites/dist/foundation.min.css');
+require('style!css!./css/style.css');
 $(document).foundation();
 
 ReactDOM.render(
@@ -21,3 +22,5 @@ ReactDOM.render(
 ,
   document.getElementById('root')
 );
+
+require('./redux-example.js')
